@@ -16,7 +16,7 @@ class Index extends React.Component {
   }
 
   getShows() {
-    fetch(`http://api.tvmaze.com/search/shows?q=${this.state.value}`)
+    fetch(`http://api.tvmaze.com/search/shows?q=${encodeURIComponent(this.state.value)}`)
     .then(results => {
       return results.json();
     })
@@ -31,21 +31,20 @@ class Index extends React.Component {
           </Link>
         </li>
       ));
-      this.setState({ shows: shows });
+      this.setState({ shows: shows })
     });
   }
 
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
-    if(event.target.value.length > 4) {
+    this.setState({ value: event.target.value }, () => {
         this.getShows()
-    }
+    })
   }
 
   handleSubmit(event) {
+    event.preventDefault()
     this.getShows()
-    event.preventDefault();
   }
 
   render() {

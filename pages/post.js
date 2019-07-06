@@ -10,16 +10,20 @@ class Post extends React.Component {
 
     var total_runtime_minutes = 0;
     var total_runtime_hours = { hours: 0, minutes: 0 };
+    var total_seasons = 1;
 
     episodes.map(episode => {
       total_runtime_minutes += episode.runtime;
+      if(episode.season > total_seasons) {
+          total_seasons = total_seasons + 1
+      }
     });
 
     // Convert minutes to hours
     total_runtime_hours.hours = Math.floor(total_runtime_minutes / 60);
     total_runtime_hours.minutes = total_runtime_minutes % 60;
 
-    return { episodes, total_runtime_hours };
+    return { episodes, total_runtime_hours, total_seasons };
   }
 
   constructor(props) {
@@ -31,9 +35,11 @@ class Post extends React.Component {
       <Layout>
         <h1>
           {this.props.total_runtime_hours.hours} hours{" "}
-          {this.props.total_runtime_hours.minutes} minutes total
+          {this.props.total_runtime_hours.minutes} minutes
         </h1>
+        <h2>{this.props.total_seasons} season{this.props.total_seasons > 1 ? 's' : ''}</h2>
         {this.props.episodes.map(episode => {
+            console.log(episode)
           return (
             <li key={episode.id}>
               <h4>{episode.name}</h4>
