@@ -6,8 +6,8 @@ class Post extends React.Component {
 
   static async getInitialProps(context) {
     const { id, title } = context.query;
-    const episodesRes = await fetch(`http://api.tvmaze.com/shows/${id}/episodes`);
-    const showRes = await fetch(`http://api.tvmaze.com/shows/${id}`);
+    const episodesRes = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
+    const showRes = await fetch(`https://api.tvmaze.com/shows/${id}`);
     const showData = await showRes.json();
     const episodes = await episodesRes.json();
 

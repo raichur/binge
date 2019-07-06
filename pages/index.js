@@ -17,7 +17,7 @@ class Index extends React.Component {
 
   getShows() {
     var parser = new DOMParser();
-    fetch(`http://api.tvmaze.com/search/shows?q=${encodeURIComponent(this.state.value)}`)
+    fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(this.state.value)}`)
     .then(results => {
       return results.json();
     })

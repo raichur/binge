@@ -1,0 +1,13 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@now/next"
+        }
+    ],
+    "alias": "binge.rchr.co",
+    "routes": [
+        { "src": "/p/(?<id>[^/]+)$", "dest": "/post?id=$id" }
+    ]
+}
