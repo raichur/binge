@@ -11,13 +11,17 @@ class Post extends React.Component {
     
         console.log(`Fetched shows count: ${episodes.length}`)
 
-        var total_runtime = 0
+        var total_runtime_minutes = 0
+        var total_runtime_hours = { hours: 0, minutes: 0}
 
         episodes.map((episode) => {
-            total_runtime += episode.runtime
+            total_runtime_minutes += episode.runtime
         })
 
-        return { episodes : episodes, total_runtime: total_runtime }
+        total_runtime_hours.hours = Math.floor(total_runtime_minutes / 60)
+        total_runtime_hours.minutes = total_runtime_minutes % 60
+
+        return { episodes, total_runtime_hours }
     }
 
     constructor(props) {
@@ -27,9 +31,8 @@ class Post extends React.Component {
     render() {
         return (
             <Layout>
-                <h1>{this.props.total_runtime} minutes total</h1>
+                <h1>{this.props.total_runtime_hours.hours} hours {this.props.total_runtime_hours.minutes} minutes total</h1>
                 {this.props.episodes.map((episode) => {
-                    // this.setState(this.state.total_runtime, this.state.total_runtime + episode.runtime)
                     return (
                         <li key={episode.id}>
                             <h4>{episode.name}</h4>
