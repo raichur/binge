@@ -16,6 +16,7 @@ class Index extends React.Component {
   }
 
   getShows() {
+    var parser = new DOMParser();
     fetch(`http://api.tvmaze.com/search/shows?q=${encodeURIComponent(this.state.value)}`)
     .then(results => {
       return results.json();
@@ -29,6 +30,7 @@ class Index extends React.Component {
           >
             <a>{result.show.name}</a>
           </Link>
+          {result.show.summary ? <p dangerouslySetInnerHTML={{__html: result.show.summary}} /> : null}
         </li>
       ));
       this.setState({ shows: shows })
