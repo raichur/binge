@@ -131,20 +131,22 @@ class Post extends React.Component {
               <img src={this.props.showImage} />
             </div>
           </div>
-          <Collapsible trigger="Episodes">
+          <Collapsible trigger="Seasons" triggerTagName="season-coll" transitionTime="200" >
             {this.props.grouped_by_season.map((item, index) => {
               return (
                 <React.Fragment key={index}>
-                  <h2 key={index}>Season {index + 1}: {this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  {this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : null}</h2>
+                  <Collapsible  transitionTime="200" trigger={`Season ${index+1}: ${this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  ${this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : ""}`} key={index}>
                   {Array.from(item[1]).map(episode => {
                     return (
-                      <li key={episode.id}>
+                        <li key={episode.id}>
                         <h4>
                           {episode.name}: <span>{episode.runtime} minutes</span>
                         </h4>
                       </li>
-                    );
-                  })}
+                      
+                      );
+                    })}
+                    </Collapsible>
                 </React.Fragment>
               );
             })}

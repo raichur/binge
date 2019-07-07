@@ -90,10 +90,22 @@ export default function Layout(props) {
               margin: 5px auto;
               text-align: left;
             }
+            season-coll {
+              font-size: 30px;
+              margin: 20px 0;
+              font-weight: 800;
+              cursor: pointer;
+            }
+            season-coll:after {
+              content: ' ↓';
+            }
+            season-coll:after {
+              content: ' ↑';
+            }
             .Collapsible__trigger {
               font-size: 25px;
               margin: 20px 0;
-              font-weight: 800;
+              font-weight: 600;
               cursor: pointer;
             }
             .is-closed:after {
