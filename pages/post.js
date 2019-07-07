@@ -107,28 +107,25 @@ class Post extends React.Component {
         <div className="showContent">
           <div className="showItem">
             <div className="left">
+              <h2 className="showTitle first"><b>{this.props.showName}</b> will take you</h2>
               <h1 className="showTime">
                 {this.props.total_runtime.days != ""
-                  ? this.props.total_runtime.days
+                  ? <div>{this.props.total_runtime.days}</div>
                   : null}{" "}
                 {this.props.total_runtime.hours != ""
-                  ? this.props.total_runtime.hours
+                  ? <div>{this.props.total_runtime.hours}</div>
                   : null}{" "}
-                <br />
                 {this.props.total_runtime.minutes != 0
-                  ? this.props.total_runtime.minutes + " minutes"
+                  ? <div>{this.props.total_runtime.minutes + " minutes"}</div>
                   : null}
               </h1>
               <h2 className="showTitle">
                 {" "}
-                to binge-watch {this.props.showName}
-              </h2>
-              <h2 className="seasons">
-                {this.props.rating.average ? this.props.rating.average + "/10" : null}
+                to binge watch
               </h2>
             </div>
             <div className="right">
-              <img src={this.props.showImage.original} />
+            {this.props.showImage ? <img src={this.props.showImage.original} /> : null}
             </div>
           </div>
             <Collapsible trigger={`${this.props.total_seasons} season${this.props.total_seasons > 1 ? "s" : ""}`} triggerTagName="Seasoncol">

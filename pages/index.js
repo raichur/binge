@@ -68,6 +68,7 @@ class Index extends React.Component {
             id="inp"
             placeholder="&nbsp;"
             value={this.state.value}
+            autoFocus={true}
             onChange={this.handleChange}
           />
         <span className="label">Search for TV shows</span>
