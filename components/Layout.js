@@ -286,7 +286,9 @@ export default function Layout(props) {
                 .Collapsible {
                   margin: 10px auto;
                 }
-                
+                .Collapsible__trigger {
+                  font-size: 18px;
+                }
                 .Collapsible__contentInner {
                   margin-top: 20px;
                 }
