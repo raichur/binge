@@ -28,9 +28,16 @@ class Index extends React.Component {
             as={`/p/${result.show.id}`}
             href={`/post?id=${result.show.id}`}
           >
-            <a>{result.show.name}</a>
+            <div className="searchItem">
+            <div className="left">
+            {result.show.image ? <img className="searchImage" src={result.show.image.medium} /> : <img className="searchImage" src="/static/noimage.jpg" />}
+            </div>
+              <div className="right">
+              <h3>{result.show.name}</h3>
+              {result.show.summary ? <p dangerouslySetInnerHTML={{__html: result.show.summary}} /> : null}
+              </div>
+            </div>
           </Link>
-          {result.show.summary ? <p dangerouslySetInnerHTML={{__html: result.show.summary}} /> : null}
         </li>
       ));
       this.setState({ shows: shows })
@@ -53,18 +60,23 @@ class Index extends React.Component {
     return (
       <Layout>
         <form className="form" id="addItemForm" onSubmit={this.handleSubmit}>
-          <input
+        <label htmlFor="inp" className="inp">
+        <input
             type="text"
-            className="input"
+            className="inp"
             autoComplete="off"
-            id="addInput"
-            placeholder="Search for TV shows"
+            id="inp"
+            placeholder="&nbsp;"
             value={this.state.value}
             onChange={this.handleChange}
           />
-          <button className="button is-info">Search</button>
+        <span className="label">Search for TV shows</span>
+        <span className="border"></span>
+        </label>
         </form>
+        <div className="content">
         {this.state.shows}
+        </div>
       </Layout>
     );
   }

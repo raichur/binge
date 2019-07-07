@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function Header() {
     return (
-        <div>
+        <div className="logo">
             <Link href="/">
                 <a>Binge</a>
             </Link>
