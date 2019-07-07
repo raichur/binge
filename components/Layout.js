@@ -90,22 +90,22 @@ export default function Layout(props) {
               margin: 5px auto;
               text-align: left;
             }
-            season-coll {
-              font-size: 30px;
+            Seasoncol {
+              font-size: 30px !important;
               margin: 20px 0;
-              font-weight: 800;
+              font-weight: 800 !important;
               cursor: pointer;
             }
-            season-coll:after {
-              content: ' ↓';
+            .is-closed:after {
+              content: ' ↓' !important;
             }
-            season-coll:after {
-              content: ' ↑';
+            .is-open:after {
+              content: ' ↑' !important;
             }
             .Collapsible__trigger {
-              font-size: 25px;
-              margin: 20px 0;
-              font-weight: 600;
+              font-size: 23px;
+              margin: 10px 0;
+              font-weight: 700;
               cursor: pointer;
             }
             .is-closed:after {
@@ -283,7 +283,13 @@ export default function Layout(props) {
                 input:focus {
                   font-size: 16px;
                 }
+                .Collapsible {
+                  margin: 10px auto;
+                }
                 
+                .Collapsible__contentInner {
+                  margin-top: 20px;
+                }
                 .showContent .showItem .right {
                   width: 200px; 
                 }

@@ -88,8 +88,9 @@ class Post extends React.Component {
       total_seasons,
       grouped_by_season,
       showName: showData.name,
-      showImage: showData.image.original,
-      season_runtime_split
+      showImage: showData.image,
+      season_runtime_split,
+      rating: showData.rating
     };
   }
 
@@ -123,34 +124,33 @@ class Post extends React.Component {
                 to binge-watch {this.props.showName}
               </h2>
               <h2 className="seasons">
-                {this.props.total_seasons} season
-                {this.props.total_seasons > 1 ? "s" : ""}
+                {this.props.rating.average ? this.props.rating.average + "/10" : null}
               </h2>
             </div>
             <div className="right">
-              <img src={this.props.showImage} />
+              <img src={this.props.showImage.original} />
             </div>
           </div>
-          <Collapsible trigger="Seasons" triggerTagName="season-coll" transitionTime="200" >
-            {this.props.grouped_by_season.map((item, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <Collapsible  transitionTime="200" trigger={`Season ${index+1}: ${this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  ${this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : ""}`} key={index}>
-                  {Array.from(item[1]).map(episode => {
-                    return (
-                        <li key={episode.id}>
-                        <h4>
-                          {episode.name}: <span>{episode.runtime} minutes</span>
-                        </h4>
-                      </li>
-                      
-                      );
-                    })}
-                    </Collapsible>
-                </React.Fragment>
-              );
-            })}
-          </Collapsible>
+            <Collapsible trigger={`${this.props.total_seasons} season${this.props.total_seasons > 1 ? "s" : ""}`} triggerTagName="Seasoncol">
+              {this.props.grouped_by_season.map((item, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Collapsible trigger={`Season ${index+1}: ${this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  ${this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : ""}`} key={index}>
+                    {Array.from(item[1]).map(episode => {
+                      return (
+                          <li key={episode.id}>
+                          <h4>
+                            {episode.name}: <span>{episode.runtime} minutes</span>
+                          </h4>
+                        </li>
+                        
+                        );
+                      })}
+                      </Collapsible>
+                  </React.Fragment>
+                );
+              })}
+            </Collapsible>
         </div>
       </Layout>
     );
