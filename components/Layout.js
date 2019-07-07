@@ -1,9 +1,13 @@
 import Header from './Header'
 import Footer from './Footer'
+import Head from 'next/head'
 
 export default function Layout(props) {
     return (
         <div>
+          <Head>
+            <title>BingeWatch</title>
+          </Head>
             <Header />
             {props.children}
             <Footer />
@@ -35,9 +39,9 @@ export default function Layout(props) {
             .logo {
               text-align: center;
               margin: 0 auto;
-              margin-top: 50px;
-              margin-bottom: 60px;
-              width: 130px;
+              margin-top: 40px;
+              margin-bottom: 50px;
+              width: 100px;
               height: auto;
               cursor: pointer;
               transition: all ease 0.4s;
@@ -47,6 +51,10 @@ export default function Layout(props) {
             }
             .logo:hover {
               transform: scale(1.05);
+            }
+            .logo:active {
+              transition: all ease 0.6s;
+              transform: scale(1.15);
             }
             .content {
               width: 700px;
@@ -60,7 +68,7 @@ export default function Layout(props) {
               cursor: pointer !important;
             }
             .showContent .showTime {
-              font-size: 45px;
+              font-size: 40px;
               font-weight: 800;
               margin: 0;
               padding: 0;
@@ -131,7 +139,7 @@ export default function Layout(props) {
               margin: 0;
             }
             .Collapsible__contentInner h4 {
-              margin: 10px 0;
+              margin: 6px 0;
             }
             .showContent h3 {
               margin: 0;
@@ -164,6 +172,9 @@ export default function Layout(props) {
             .showItem .right {
               margin: 0;
               width: 350px;
+            }
+            .showTime br {
+              display: none;
             }
             .left {
               margin-right: 15px;
@@ -249,23 +260,29 @@ export default function Layout(props) {
                   width: 250px; 
                 }
               }
+              @media screen and (max-width: 850px) {
+                .showTime br {
+                  display: block;
+                }
+              }
               @media screen and (max-width: 800px) { 
                 select:focus,
                 textarea:focus,
                 input:focus {
                   font-size: 16px;
                 }
+                
                 .showContent .showItem .right {
                   width: 200px; 
                 }
                 .showContent .showTime {
-                    font-size: 2rem;
+                    font-size: 1.7rem;
                 }
                 .showContent .showTitle {
                     font-size: 1.5rem;
                 }
                 .Collapsible__contentInner li h4 {
-                  font-size: 14px;
+                  font-size: 12px;
                 }
                 .inp, .inp input, .content {
                   width: calc(100% - 30px);
@@ -273,7 +290,9 @@ export default function Layout(props) {
                 .inp .border {
                   width: 100%;
                 }
-
+                .showContent .showItem {
+                  margin: 50px auto;
+                }
                 }
             `}</style>
         </div>
