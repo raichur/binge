@@ -1,6 +1,7 @@
 import Layout from "../components/Layout.js";
 import fetch from "isomorphic-unfetch";
 import React from "react";
+import Collapsible from 'react-collapsible';
 
 class Post extends React.Component {
 
@@ -74,18 +75,15 @@ class Post extends React.Component {
           <img src={this.props.showImage} />
           </div>
         </div>
-        
-        
-
-        <div className="episodeList">
-        {this.props.episodes.map(episode => {
-          return (
-            <li key={episode.id}>
-              <h4>{episode.name}: <span>{episode.runtime} minutes</span></h4>
-            </li>
-          );
-        })}
-        </div>
+        <Collapsible trigger="Episodes">
+          {this.props.episodes.map(episode => {
+            return (
+              <li key={episode.id}>
+                <h4>{episode.name}: <span>{episode.runtime} minutes</span></h4>
+              </li>
+            );
+          })}
+          </Collapsible>
         </div>
       </Layout>
     );

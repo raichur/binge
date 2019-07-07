@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <div className="logo">
             <Link href="/">
-                <a>Binge</a>
+                <img src="/static/bw.svg"/>
             </Link>
         </div>
     )

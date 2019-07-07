@@ -34,7 +34,7 @@ class Index extends React.Component {
             </div>
               <div className="right">
               <h3>{result.show.name}</h3>
-              {result.show.summary ? <p dangerouslySetInnerHTML={{__html: result.show.summary}} /> : null}
+              {result.show.summary ? <p className="summary" dangerouslySetInnerHTML={{__html: result.show.summary}} /> : null}
               </div>
             </div>
           </Link>

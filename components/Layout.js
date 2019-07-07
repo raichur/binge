@@ -1,12 +1,18 @@
 import Header from './Header'
+import Footer from './Footer'
 
 export default function Layout(props) {
     return (
         <div>
             <Header />
             {props.children}
+            <Footer />
             <style jsx global>{`
-
+            html, body
+            {
+                margin: 0;
+                padding: 0;
+            }
             body {
               display: grid;
               
@@ -22,22 +28,37 @@ export default function Layout(props) {
                 font-weight: bold;
                 color: black;
             }
+            footer {
+              margin: 50px auto;
+              text-align: center;
+            }
             .logo {
               text-align: center;
+              margin: 0 auto;
               margin-top: 50px;
-              font-size: 40px;
+              margin-bottom: 60px;
+              width: 130px;
+              height: auto;
+              cursor: pointer;
+              transition: all ease 0.4s;
+            }
+            .logo img {
+              margin: 0 auto;
+            }
+            .logo:hover {
+              transform: scale(1.05);
             }
             .content {
               width: 700px;
               margin: 0 auto;
+              min-height: calc(100% - 150px);
             }
             .content li {
               list-style: none;
-              margin: 20px auto;
+              margin: 15px auto;
               border-bottom: 1px solid rgba(0,0,0,0.04);
               cursor: pointer !important;
             }
-
             .showContent .showTime {
               font-size: 45px;
               font-weight: 800;
@@ -61,7 +82,26 @@ export default function Layout(props) {
               margin: 5px auto;
               text-align: left;
             }
-            .episodeList li span {
+            .Collapsible__trigger {
+              font-size: 25px;
+              margin: 20px 0;
+              font-weight: 800;
+              cursor: pointer;
+            }
+            .is-closed:after {
+              content: ' ↓';
+            }
+            .is-open:after {
+              content: ' ↑';
+            }
+            .Collapsible {
+              margin: 40px auto;
+              text-align: center;
+            }
+            .Collapsible__contentInner {
+              margin-top: 30px;
+            }
+            .Collapsible__contentInner li span {
               font-weight: 400;
               color: #4f4f4f;
             }
@@ -78,6 +118,21 @@ export default function Layout(props) {
               height: auto;
               border-radius: 5px;
             }
+            .content h3 {
+              margin: 0;
+              padding: 0;
+              margin-bottom: 15px;
+            }
+            .content p {
+              margin: 0;
+            }
+            .Collapsible__contentInner li {
+              list-style: none;
+              margin: 0;
+            }
+            .Collapsible__contentInner h4 {
+              margin: 10px 0;
+            }
             .showContent h3 {
               margin: 0;
               padding: 0;
@@ -88,6 +143,15 @@ export default function Layout(props) {
             }
             .searchItem {
               display: flex;
+            }
+            .searchItem .summary {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4; /* number of lines to show */
+              line-height: 20px;        /* fallback */
+              max-height: 80px;       /* fallback */
             }
             .showContent {
               width: 900px;
@@ -108,11 +172,11 @@ export default function Layout(props) {
               margin-left: 15px;
             }
             .searchImage {
-              width: 150px;
+              width: 100px;
               height: auto;
               border-radius: 4px;
               transition: all ease 0.3s;
-              margin-bottom: 20px;
+              margin-bottom: 15px;
             }
             form {
               margin: 40px auto;
@@ -177,11 +241,31 @@ export default function Layout(props) {
               .inp input:focus + span + .border {
                 transform: scaleX(1);
               }
+              @media screen and (max-width: 950px) {
+                .showContent {
+                  width: calc(100% - 30px);
+                }
+                .showContent .showItem .right {
+                  width: 250px; 
+                }
+              }
               @media screen and (max-width: 800px) { 
                 select:focus,
                 textarea:focus,
                 input:focus {
                   font-size: 16px;
+                }
+                .showContent .showItem .right {
+                  width: 200px; 
+                }
+                .showContent .showTime {
+                    font-size: 2rem;
+                }
+                .showContent .showTitle {
+                    font-size: 1.5rem;
+                }
+                .Collapsible__contentInner li h4 {
+                  font-size: 14px;
                 }
                 .inp, .inp input, .content {
                   width: calc(100% - 30px);
