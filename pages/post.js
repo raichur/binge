@@ -107,7 +107,7 @@ class Post extends React.Component {
         <div className="showContent">
           <div className="showItem">
             <div className="left">
-              <h2 className="showTitle first"><b>{this.props.showName}</b> will take you</h2>
+              <h2 className="showTitle first"><b>{this.props.showName}</b> will take </h2>
               <h1 className="showTime">
                 {this.props.total_runtime.days != ""
                   ? <div>{this.props.total_runtime.days}</div>
@@ -128,11 +128,11 @@ class Post extends React.Component {
             {this.props.showImage ? <img src={this.props.showImage.original} /> : null}
             </div>
           </div>
-            <Collapsible trigger={`${this.props.total_seasons} season${this.props.total_seasons > 1 ? "s" : ""}`} triggerTagName="Seasoncol">
+            <Collapsible transitionTime={100} transitionCloseTime={150} trigger={`${this.props.total_seasons} season${this.props.total_seasons > 1 ? "s" : ""}`} triggerTagName="Seasoncol">
               {this.props.grouped_by_season.map((item, index) => {
                 return (
                   <React.Fragment key={index}>
-                    <Collapsible trigger={`Season ${index+1}: ${this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  ${this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : ""}`} key={index}>
+                    <Collapsible transitionTime={100} transitionCloseTime={150} trigger={`Season ${index+1}: ${this.props.season_runtime_split[index].hours > 1 ? this.props.season_runtime_split[index].hours + " hours" : this.props.season_runtime_split[index].hours + " hour"}  ${this.props.season_runtime_split[index].minutes != 0 ? this.props.season_runtime_split[index].minutes + " minutes" : ""}`} key={index}>
                     {Array.from(item[1]).map(episode => {
                       return (
                           <li key={episode.id}>

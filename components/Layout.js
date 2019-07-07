@@ -49,11 +49,18 @@ export default function Layout(props) {
         .logo img {
           margin: 0 auto;
         }
+        .logo:hover .logotext {
+          fill: #3090ff !important;
+          transition: all ease 0.2s;
+        }
+        .logotext {
+          transition: all ease 0.2s;
+        }
         .logo:hover {
           transform: scale(1.05);
         }
         .logo:active {
-          transition: all ease 0.6s;
+          transition: all ease 0.15s;
           transform: scale(1.15);
         }
         .content {
@@ -164,7 +171,7 @@ export default function Layout(props) {
           text-align: left;
         }
         Seasoncol {
-          font-size: 30px !important;
+          font-size: 27px !important;
           margin: 20px 0;
           font-weight: 800 !important;
           cursor: pointer;
@@ -189,11 +196,12 @@ export default function Layout(props) {
           content: " ↑";
         }
         .Collapsible {
-          margin: 40px auto;
+          margin: 15px auto;
           text-align: center;
         }
         .Collapsible__contentInner {
-          margin-top: 30px;
+          margin-top: 15px;
+          margin-bottom: 20px;
         }
         .Collapsible__contentInner li span {
           font-weight: 400;
@@ -341,7 +349,7 @@ export default function Layout(props) {
         }
         @media screen and (max-width: 950px) {
           .showContent {
-            width: calc(100% - 30px);
+            width: 700px;
           }
           .showContent .showItem .right {
             width: 250px;
@@ -360,13 +368,17 @@ export default function Layout(props) {
             font-size: 18px;
           }
           .Collapsible__contentInner {
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
           }
           .showContent .showItem .right {
             width: 200px;
           }
           .showContent .showTitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem !important;
+          }
+          .showContent .first {
+            font-size: 1.1rem !important;
           }
           .Collapsible__contentInner li h4 {
             font-size: 12px;
@@ -382,10 +394,24 @@ export default function Layout(props) {
           .showContent .showItem {
             margin: 50px auto;
           }
+          Seasoncol {
+            font-size: 24px !important;
+          }
+        }
+        @media screen and (max-width: 700px) {
+          .showContent {
+            width: calc(100% - 30px);
+          }
         }
         @media screen and (max-width: 600px) {
           .showContent .showTime div {
             font-size: 1.9rem;
+          }
+          .showTime div {
+            font-size: 29px !important;
+          }
+          .showContent .showItem .right {
+            width: 130px;
           }
         }
       `}</style>
